@@ -15,3 +15,27 @@ e.g.
 are equal below 
 * NODE_ENV=production
 * PORT=5000
+
+### .gitlab-ci.yml
+```yaml
+staging:
+  stage: staging
+  image: 94tamir/auto-deploy-swarm:0.0.1
+  environment:
+    name: staging
+  script:
+    - /deploy/enter.sh
+  only:
+    - master
+
+production:
+  stage: production
+  image: 94tamir/auto-deploy-swarm:0.0.1
+  when: manual
+  environment:
+    name: production
+  script:
+    - /deploy/enter.sh
+  only:
+    - master
+```
