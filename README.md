@@ -1,5 +1,5 @@
 # Auto deploy the service to swarm by ssh from Gitlab CI
-Healthcheck on 5000
+Healthcheck path `/healthcheck` on `5000`
 ### Require Envs
 * GITLAB_CD_SSH_HOST
 * GITLAB_CD_SSH_PRIVATE_KEY
@@ -21,7 +21,7 @@ are equal below
 ```yaml
 staging:
   stage: staging
-  image: 94tamir/auto-deploy-swarm:0.0.3
+  image: 94tamir/auto-deploy-swarm:0.0.4
   environment:
     name: staging
   script:
@@ -31,7 +31,7 @@ staging:
 
 production:
   stage: production
-  image: 94tamir/auto-deploy-swarm:0.0.3
+  image: 94tamir/auto-deploy-swarm:0.0.4
   when: manual
   environment:
     name: production

@@ -9,7 +9,7 @@ ssh $SSH_REMOTE "cat > $STATCK_FILE" << EOF
         env_file:
           - "\${ENV_FILE}"
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://127.0.0.1:5000"]
+          test: ["CMD", "curl", "-f", "http://127.0.0.1:5000/healthcheck"]
           interval: 5s
           timeout: 10s
           retries: 3
