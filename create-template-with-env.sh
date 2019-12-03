@@ -10,10 +10,10 @@ ssh $SSH_REMOTE "cat > $STATCK_FILE" << EOF
           - "\${ENV_FILE}"
         healthcheck:
           test: ["CMD", "curl", "-f", "http://127.0.0.1:5000"]
-          interval: 60s
-          timeout: 15s
+          interval: 10s
+          timeout: 10s
           retries: 3
-          start_period: 5s
+          start_period: 15s
         deploy:
           update_config:
             parallelism: 1
