@@ -21,7 +21,7 @@ are equal below
 ```yaml
 staging:
   stage: staging
-  image: 94tamir/auto-deploy-swarm:0.0.1
+  image: 94tamir/auto-deploy-swarm:0.0.3
   environment:
     name: staging
   script:
@@ -31,7 +31,7 @@ staging:
 
 production:
   stage: production
-  image: 94tamir/auto-deploy-swarm:0.0.1
+  image: 94tamir/auto-deploy-swarm:0.0.3
   when: manual
   environment:
     name: production
