@@ -26,4 +26,4 @@ ssh $SSH_REMOTE "cat > $STATCK_FILE" << EOF
             max_attempts: 5
             window: 120s
 EOF
-set | grep ^SWARM_ | sed -e "s/^SWARM_//" | ssh $SSH_REMOTE "cat > $ENV_FILE"
+set | grep ^SWARM_ | sed -e "s/^SWARM_//" -e 's/='\''/=/' -e 's/'\''$//' | ssh $SSH_REMOTE "cat > $ENV_FILE"
