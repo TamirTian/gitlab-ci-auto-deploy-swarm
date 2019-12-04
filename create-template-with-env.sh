@@ -3,7 +3,7 @@ set -e
 if [[ -n "$EXPOSE_PORT" ]]; then
 export EXPOSE_PORT_STR="$(cat << EOF
     ports:
-      $EXPOSE_PORT:5000
+      ${EXPOSE_PORT}:${SWARM_PORT:-5000}
 EOF
 )"
 fi
