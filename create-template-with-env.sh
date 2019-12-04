@@ -24,7 +24,7 @@ $EXPOSE_PORT_STR
       interval: 5s
       timeout: 10s
       retries: 3
-      start_period: 15s
+      start_period: 30s
     deploy:
       update_config:
         parallelism: 1
