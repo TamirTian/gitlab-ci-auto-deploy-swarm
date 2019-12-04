@@ -12,7 +12,7 @@ export NAMESPACE=$SWARM_NAMESPACE
 export SERVICE_NAME=$CI_PROJECT_NAME
 export WORKDIR=/tmp/auto-deploay-swarm/$SERVICE_NAME
 export ENV_FILE=$WORKDIR/${NAMESPACE}-${SERVICE_NAME}.env
-export STATCK_FILE=$WORKDIR/${SERVICE_NAME}-template.yml
+export STATCK_FILE=$WORKDIR/${NAMESPACE}-${SERVICE_NAME}-template.yml
 export REPLICAS=${REPLICAS:-1}
 
 if [[ -z "$CI_COMMIT_TAG" ]]; then
