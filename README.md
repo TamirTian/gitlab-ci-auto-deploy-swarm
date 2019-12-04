@@ -6,6 +6,9 @@ Healthcheck path `/healthcheck` on `5000`
 * GITLAB_CD_SSH_USER
 * SWARM_NAMESPACE
 
+### Option Envs
+* REPLICAS
+
 ### Customize Envs
 SWARM_*
 

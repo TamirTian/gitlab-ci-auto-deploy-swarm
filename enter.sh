@@ -1,5 +1,10 @@
 #!/bin/sh
 set -e
+SERVICE_WORKDIR=$(pwd)
+if [[ -f "$SERVICE_WORKDIR/compose.yml" ]]; then
+  export STATCK_CUSTOMIZE_FILE=${SERVICE_WORKDIR}/compose.yml
+fi
+
 cd "$(dirname "$0")"
 export PRIVATE_KEY=$GITLAB_CD_SSH_PRIVATE_KEY
 export SSH_REMOTE=${GITLAB_CD_SSH_USER}@${GITLAB_CD_SSH_HOST}
@@ -8,6 +13,7 @@ export SERVICE_NAME=$CI_PROJECT_NAME
 export WORKDIR=/tmp/auto-deploay-swarm/$SERVICE_NAME
 export ENV_FILE=$WORKDIR/${NAMESPACE}-${SERVICE_NAME}.env
 export STATCK_FILE=$WORKDIR/${SERVICE_NAME}-template.yml
+export REPLICAS=${REPLICAS:-1}
 
 if [[ -z "$CI_COMMIT_TAG" ]]; then
   export IMAGE=${CI_APPLICATION_REPOSITORY:-$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG}:${CI_APPLICATION_TAG:-$CI_COMMIT_SHA}
