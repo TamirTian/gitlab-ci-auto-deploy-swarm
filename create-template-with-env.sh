@@ -4,7 +4,8 @@ if [[ -n "$EXPOSE_PORT" ]]; then
 export EXPOSE_PORT_STR="$(cat << EOF
     ports:
       $EXPOSE_PORT:5000
-EOF)"
+EOF
+)"
 fi
 ssh $SSH_REMOTE "mkdir -p $WORKDIR"
 if [[ -n "$STATCK_CUSTOMIZE_FILE" ]]; then
