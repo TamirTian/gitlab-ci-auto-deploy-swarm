@@ -6,12 +6,13 @@ if [[ -f "$SERVICE_WORKDIR/compose.yml" ]]; then
 fi
 
 cd "$(dirname "$0")"
+TIME=$(date +%s%3N)
 export PRIVATE_KEY=$GITLAB_CD_SSH_PRIVATE_KEY
 export SSH_REMOTE=${GITLAB_CD_SSH_USER}@${GITLAB_CD_SSH_HOST}
 export NAMESPACE=$SWARM_NAMESPACE
 export SERVICE_NAME=$CI_PROJECT_NAME
 export WORKDIR=/tmp/auto-deploay-swarm/$SERVICE_NAME
-export ENV_FILE=$WORKDIR/${NAMESPACE}-${SERVICE_NAME}.env
+export ENV_FILE=$WORKDIR/${NAMESPACE}-${SERVICE_NAME}-${TIME}.env
 export STATCK_FILE=$WORKDIR/${NAMESPACE}-${SERVICE_NAME}-template.yml
 export REPLICAS=${REPLICAS:-1}
 
